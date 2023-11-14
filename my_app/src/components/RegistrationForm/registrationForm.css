@@ -1,0 +1,10 @@
+.common {
+	display: flex;
+	flex-direction: column;
+}
+
+.users-list {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}

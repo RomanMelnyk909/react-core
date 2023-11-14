@@ -1,0 +1,12 @@
+.common-user-card {
+	border: 1px solid silver;
+	height: 160px;
+	width: 150px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	border-radius: 20px;
+	margin-bottom: 20px;
+}
+
