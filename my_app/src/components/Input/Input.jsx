@@ -1,9 +1,11 @@
+import './input.css';
+
 const Input = (props) => {
 	
 	const { value, type, placeholder, label, onChangeFunction } = props;
 	
 	return (
-		<label>
+		<label className='input-common'>
 			{ label }
 			<input 
 			type={type || "text"}

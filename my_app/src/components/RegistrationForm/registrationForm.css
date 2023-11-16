@@ -1,10 +1,32 @@
-.common {
-	display: flex;
-	flex-direction: column;
+.common-registration {
+  display: flex;
 }
 
 .users-list {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.add-user-button {
+  width: 177px;
+  height: 34px;
+  background-color: #2f2929;
+  border-radius: 10px;
+  border-width: 0;
+}
+
+.left-side {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+  gap: 20px;
+}
+
+.right-side {
+  width: 70%;
+  border-left: 1px solid silver;
+  display: flex;
+  padding-left: 50px;
 }
