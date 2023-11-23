@@ -1,8 +1,11 @@
 import styles from './borderWrapper.module.css'
 
-const BorderWrapper = () => {
+const BorderWrapper = (props) => {
+	const { children, showDefaultText } = props;
 	return (
-	<div className={styles['common']}>Border Wrapper</div>
+	<div className={styles['common']}>
+		{ showDefaultText ? 'Default text ...' : children }
+	</div>
 	);
 }
 
