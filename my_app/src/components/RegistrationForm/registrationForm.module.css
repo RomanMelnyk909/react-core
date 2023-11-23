@@ -24,6 +24,10 @@
   gap: 20px;
 }
 
+.border-red {
+  border: 1px solid red;
+}
+
 .right-side {
   width: 70%;
   border-left: 1px solid silver;

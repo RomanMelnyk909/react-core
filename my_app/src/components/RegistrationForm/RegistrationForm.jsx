@@ -1,6 +1,11 @@
-import { useState } from "react";
+import classNames from "classnames";
+import { isEmpty } from "lodash";
+
 import Input from "../Input";
 import UserCard from "../UserCard/UserCard";
+
+import { useState, useContext } from "react";
+import { UsersContext } from "../../App";
 
 import { v4 as getUniqueId } from 'uuid';
 
@@ -34,12 +39,21 @@ const DEFAULT_USERS = [
 ];
 
 const RegistrationForm = () => {
+  
+  const contextData = useContext(UsersContext);
+
+  console.log(contextData)
+
   const [users, setUsers] = useState(DEFAULT_USERS);
   const [isEditMode, setIsEditMode] = useState(true);
+
+  contextData.setUsersCount(users.length)
 
   const [name, setName] = useState();
   const [surname, setSurname] = useState();
   const [email, setEmail] = useState();
+
+  const [err, setErr] = useState(false)
 
   const onAddUser = () => {
     const user = {
@@ -50,10 +64,22 @@ const RegistrationForm = () => {
     };
 
     setUsers([...users, user]);
+
+    if (isEmpty(name) || isEmpty(surname) || isEmpty(email)) {
+      setErr(true)
+    }
+    
     setName("");
     setSurname("");
     setEmail("");
   };
+
+  const leftSideClassName = classNames(
+    styles['left-side'],
+     {
+      [styles['border-red']]: err,
+    },
+  );
 
 
   const onGetName = (value) => {
@@ -84,7 +110,7 @@ const RegistrationForm = () => {
 
   return (
     <div className={styles['common']}>
-      <div className={styles['left-side']}>
+      <div className={leftSideClassName}>
         <Input
           label="Name: "
           placeholder="Enter Your Name"

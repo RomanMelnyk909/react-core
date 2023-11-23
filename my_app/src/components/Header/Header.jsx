@@ -1,7 +1,12 @@
 import NavigationItem from "../NavigationItem/NavigationItem";
 import "./header.css";
+import { UsersContext } from "../../App";
+import { useContext } from "react";
 
 const Header = () => {
+
+  const { usersCount } = useContext(UsersContext);
+
   const navElements = [
     {
       text: "First",
@@ -36,6 +41,7 @@ const Header = () => {
           />
         );
       })}
+      <div>User Count: {usersCount}</div>
     </header>
   );
 };
