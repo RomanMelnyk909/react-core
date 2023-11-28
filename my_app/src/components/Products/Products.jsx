@@ -1,7 +1,9 @@
 // import BorderWrapper from '../BorderWrapper';
 import { useEffect, useState } from 'react';
+import QueryLoader from '../QueryLoader';
 
 import styles from './products.module.css';
+import UserCard from '../UserCard/UserCard';
 
 const Products = () => {
 
@@ -25,14 +27,30 @@ const Products = () => {
 	
 	return (
 		<>
-			<div className={styles['common']}>
+			{/* <div className={styles['common']}>
 				<div>{ fetching && 'Data is loading ...' }</div>
 				<div>{ fetchError && `Opps, we have error: ${fetchError} ` }</div>
-				
-			</div>
-			<div>
-				{/* { users.map() } */}
-			</div>
+			</div> */}
+			{ console.log(users) }
+
+
+			<QueryLoader fetching={fetching} error={fetchError}>
+
+				{ users.map(({ name, username, email, id }) => {
+					return (
+						<UserCard 
+						name={name}
+						surname={username}
+						email={email}
+						key={id}
+						id={id} />			
+					);
+				}) }
+
+			</QueryLoader>
+
+
+
 			{/* <BorderWrapper >
 				<div>Hello</div>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, 
