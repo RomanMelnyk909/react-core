@@ -1,6 +1,7 @@
 // import RegistrationForm from "../RegistrationForm";
-// import Products from '../Products'
+import Products from "../Products";
 
+import Modal from "../Modal";
 import RefInput from "../RefInput";
 import "./main.css";
 
@@ -8,9 +9,10 @@ const Main = () => {
   return (
     <div className="main">
       <div className="main-wrapper">
-        <RefInput />
+        {/* <RefInput /> */}
         {/* <RegistrationForm /> */}
-        {/* <Products /> */}
+        <Products />
+        <Modal />
       </div>
     </div>
   );

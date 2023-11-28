@@ -26,16 +26,8 @@ const Products = () => {
 	}, []);
 	
 	return (
-		<>
-			{/* <div className={styles['common']}>
-				<div>{ fetching && 'Data is loading ...' }</div>
-				<div>{ fetchError && `Opps, we have error: ${fetchError} ` }</div>
-			</div> */}
-			{ console.log(users) }
-
-
+		<div className={styles['common']}>
 			<QueryLoader fetching={fetching} error={fetchError}>
-
 				{ users.map(({ name, username, email, id }) => {
 					return (
 						<UserCard 
@@ -46,7 +38,6 @@ const Products = () => {
 						id={id} />			
 					);
 				}) }
-
 			</QueryLoader>
 
 
@@ -57,7 +48,7 @@ const Products = () => {
 					dolore minima vitae nemo alias aliquam adipisci odit explicabo.
 					 Vel delectus aut sequi culpa accusamus eum sapiente. Fuga cupiditate earum dolore!</p>
 			</BorderWrapper> */}
-		</>
+		</div>
 	);
 }
 
