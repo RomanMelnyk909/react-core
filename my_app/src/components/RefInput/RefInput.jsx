@@ -1,11 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useParams } from "react-router-dom";
 
 const RefInput = () => {
   const inputRef = useRef(null);
 
-  //   useEffect(() => {
-  //     console.log(inputRef.current);
-  //   }, []);
+  const params = useParams();
+  console.log(params);
 
   return (
     <label>

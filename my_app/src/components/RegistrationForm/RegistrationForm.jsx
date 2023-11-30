@@ -1,6 +1,8 @@
 import classnames from "classnames";
 import { isEmpty } from "lodash";
 
+import { useNavigate } from "react-router-dom";
+
 import Input from "../Input";
 import UserCard from "../UserCard/UserCard";
 
@@ -10,6 +12,11 @@ import { UsersContext } from "../../App";
 import { v4 as getUniqueId } from "uuid";
 
 import styles from "./registrationForm.module.css";
+import {
+  HOME_PATH,
+  PRODUCTS_PATH,
+  REF_PATH,
+} from "../../constants/routes-links";
 
 const DEFAULT_USERS = [
   {
@@ -41,8 +48,12 @@ const DEFAULT_USERS = [
 const RegistrationForm = () => {
   const contextData = useContext(UsersContext);
 
+  const navigator = useNavigate();
+
   const [users, setUsers] = useState(DEFAULT_USERS);
   const [isEditMode, setIsEditMode] = useState(true);
+
+  if (users.length > 5) navigator(REF_PATH);
 
   contextData.setUsersCount(users.length);
 
@@ -138,6 +149,24 @@ const RegistrationForm = () => {
             Add User
           </button>
         )}
+        <button
+          type="button"
+          onClick={() => {
+            navigator(HOME_PATH);
+          }}
+          className={styles["add-user-button"]}
+        >
+          Link to homepage
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            navigator(PRODUCTS_PATH);
+          }}
+          className={styles["add-user-button"]}
+        >
+          Link to Products
+        </button>
       </div>
       <div className={styles["right-side"]}>
         <div className={styles["users-list"]}>

@@ -35,12 +35,14 @@ const Header = () => {
     },
   ];
 
+  const someParam = "hello_param";
+
   return (
     <header>
       <Link to={HOME_PATH}>Home</Link>
       <Link to={PRODUCTS_PATH}>Products</Link>
       <Link to={REGISTRATION_PATH}>Registration</Link>
-      <Link to={REF_PATH}>Ref</Link>
+      <Link to={`/ref/${someParam}`}>Ref</Link>
       {/* {navElements.map((element) => {
         return (
           <NavigationItem
