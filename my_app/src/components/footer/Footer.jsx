@@ -4,9 +4,8 @@ import { UsersContext } from "../../App";
 import { useContext } from "react";
 
 const Footer = () => {
-
   const contextData = useContext(UsersContext);
-  
+
   return (
     <footer className="footer">
       <FooterItem content="Головна" isLowersetext={false} />

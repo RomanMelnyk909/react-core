@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import classnames from "classnames";
 import { isEmpty } from "lodash";
 
 import Input from "../Input";
@@ -7,80 +7,73 @@ import UserCard from "../UserCard/UserCard";
 import { useState, useContext } from "react";
 import { UsersContext } from "../../App";
 
-import { v4 as getUniqueId } from 'uuid';
+import { v4 as getUniqueId } from "uuid";
 
 import styles from "./registrationForm.module.css";
 
 const DEFAULT_USERS = [
   {
-    name: 'John',
-    surname: 'Nollan',
-    email: 'john@gmail.com',
-    id: getUniqueId()
+    name: "John",
+    surname: "Nollan",
+    email: "john@gmail.com",
+    id: getUniqueId(),
   },
   {
-    name: 'Nick',
-    surname: 'Rozberg',
-    email: 'nick',
-    id: getUniqueId()
+    name: "Nick",
+    surname: "Rozberg",
+    email: "nick",
+    id: getUniqueId(),
   },
   {
-    name: 'Anna',
-    surname: 'Lee',
-    email: 'anna@gmail.com',
-    id: getUniqueId()
+    name: "Anna",
+    surname: "Lee",
+    email: "anna@gmail.com",
+    id: getUniqueId(),
   },
   {
-    name: 'Rafael',
-    surname: 'Rafff',
-    email: 'rafael@gmail.com',
-    id: getUniqueId()
+    name: "Rafael",
+    surname: "Rafff",
+    email: "rafael@gmail.com",
+    id: getUniqueId(),
   },
 ];
 
 const RegistrationForm = () => {
-  
   const contextData = useContext(UsersContext);
-
-  console.log(contextData)
 
   const [users, setUsers] = useState(DEFAULT_USERS);
   const [isEditMode, setIsEditMode] = useState(true);
 
-  contextData.setUsersCount(users.length)
+  contextData.setUsersCount(users.length);
 
   const [name, setName] = useState();
   const [surname, setSurname] = useState();
   const [email, setEmail] = useState();
 
-  const [err, setErr] = useState(false)
+  const [err, setErr] = useState(false);
 
   const onAddUser = () => {
     const user = {
       name,
       surname,
       email,
-      id: getUniqueId()
+      id: getUniqueId(),
     };
 
     setUsers([...users, user]);
 
     if (isEmpty(name) || isEmpty(surname) || isEmpty(email)) {
-      setErr(true)
+      setErr(true);
     }
-    
+
     setName("");
     setSurname("");
     setEmail("");
   };
 
-  const leftSideClassName = classNames(
-    styles['left-side'],
-     {
-      [styles['border-red']]: err,
-    },
-  );
-
+  const leftSideClassName = classnames(styles["left-side"], {
+    [styles["border-red"]]: err,
+  });
 
   const onGetName = (value) => {
     setName(value);
@@ -96,20 +89,19 @@ const RegistrationForm = () => {
 
   const onDeleteUserHandler = (id) => {
     const filteredUsers = users.filter((user) => user.id !== id);
-      setUsers(filteredUsers)  
+    setUsers(filteredUsers);
   };
 
   const onUpdateUserHandler = (id) => {
     const currentUser = users.filter((user) => user.id === id)[0];
-  
+
     setName(currentUser.name);
     setSurname(currentUser.surname);
     setEmail(currentUser.email);
   };
 
-
   return (
-    <div className={styles['common']}>
+    <div className={styles["common"]}>
       <div className={leftSideClassName}>
         <Input
           label="Name: "
@@ -129,20 +121,26 @@ const RegistrationForm = () => {
           onChangeFunction={onGetEmail}
           value={email}
         />
-        {
-          isEditMode ? (
-            <button type="button" onClick={onAddUser} className={styles['add-user-button']}>
-              Update User
-            </button>
-          ) : (
-            <button type="button" onClick={onAddUser} className={styles['add-user-button']}>
-               Add User
-            </button>
-          )
-        }
+        {isEditMode ? (
+          <button
+            type="button"
+            onClick={onAddUser}
+            className={styles["add-user-button"]}
+          >
+            Update User
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={onAddUser}
+            className={styles["add-user-button"]}
+          >
+            Add User
+          </button>
+        )}
       </div>
-      <div className={styles['right-side']}>
-        <div className={styles['users-list']}>
+      <div className={styles["right-side"]}>
+        <div className={styles["users-list"]}>
           {users.map((user, index) => {
             const { name, surname, email, id } = user;
             return (
