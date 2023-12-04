@@ -1,19 +1,20 @@
-import './footer.css';
+import "./footer.css";
 import FooterItem from "../FooterItem";
-import NavigationItem from "../NavigationItem";
+import { UsersContext } from "../../App";
+import { useContext } from "react";
 
 const Footer = () => {
-   return (
-      <footer>
-         <FooterItem content='FOOTER' isLowersetext={true} />
-         <div className="footer">
-         <FooterItem content='Головна' isLowersetext={false} />
-         <FooterItem content='Про нас' isLowersetext={false} />
-         <FooterItem content='Контакти' isLowersetext={false} />
-         <FooterItem content='Блог' isLowersetext={false} />
-         <NavigationItem text="navItem" />
-         </div>
-      </footer>);
-}
+  const contextData = useContext(UsersContext);
+
+  return (
+    <footer className="footer">
+      <FooterItem content="Головна" isLowersetext={false} />
+      <FooterItem content="Про нас" isLowersetext={false} />
+      <FooterItem content="Контакти" isLowersetext={false} />
+      <FooterItem content="Блог" isLowersetext={false} />
+      <div>Total Users Count: {contextData.usersCount}</div>
+    </footer>
+  );
+};
 
 export default Footer;
