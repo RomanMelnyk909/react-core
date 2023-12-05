@@ -20,10 +20,16 @@ import {
   SINGLE_USER_PATH,
 } from "./constants/routes-links";
 
+import api from "./http";
+
 export const UsersContext = createContext();
 
 const App = () => {
   const [usersCount, setUsersCount] = useState(0);
+
+  api.get("api/Products/list");
+
+  api.get("api/Products/list").then((resp) => console.log(resp));
 
   return (
     <UsersContext.Provider value={{ usersCount, setUsersCount }}>
